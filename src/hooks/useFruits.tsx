@@ -5,6 +5,7 @@ import useFruitStore from '~/store/fruit'
 import pdfMake from 'pdfmake/build/pdfmake'
 import pdfFonts from 'pdfmake/build/vfs_fonts'
 import { numberFormat } from '~/utils/formatNumbers'
+import { fruits as mockFruits } from '~/utils/fruitsMock'
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
@@ -15,6 +16,7 @@ export const useFruits = () => {
     totalValue,
     totalQuantity,
     filteredFruits,
+    setFruits,
     removeOneFruit,
     addOneFruit,
     setSearchTerm,
@@ -22,8 +24,10 @@ export const useFruits = () => {
   const loadFruits = async () => {
     try {
       setIsLoading(true)
-
       await new Promise((resolve) => {
+        if (fruits.length === 0) {
+          setFruits(mockFruits);
+        }
         setTimeout(resolve, 1000)
       })
     } catch (error) {
