@@ -1,0 +1,34 @@
+{
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/__mocks__/fileMock.js",
+    "\\.(css|less)$": "<rootDir>/src/__mocks__/styleMock.js"
+  },
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.ts"
+  ],
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.{ts,tsx}",
+    "!<rootDir>/src/index.tsx",
+    "!<rootDir>/src/serviceWorker.ts",
+    "!<rootDir>/src/react-app-env.d.ts"
+  ],
+  "coverageReporters": [
+    "json",
+    "lcov",
+    "text",
+    "clover",
+    "html"
+  ],
+  "coverageDirectory": "coverage",
+  "globals": {
+    "ts-jest": {
+      "tsconfig": "tsconfig.json"
+    }
+  }
+}
