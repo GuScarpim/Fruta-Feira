@@ -7,7 +7,7 @@ import { PiUserBold } from 'react-icons/pi'
 
 import { ContentUser, DropdownMenu } from './styles'
 
-const Navbar: React.FC = () => {
+const User: React.FC = () => {
   const navigate = useNavigate()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -26,9 +26,13 @@ const Navbar: React.FC = () => {
   return (
     <ContentUser onClick={() => handleToggleMenu()}>
       <PiUserBold />
-      <span>{data?.name}</span>
+      <span data-testId="user-name">{data?.name}</span>
       {isMenuOpen && (
-        <DropdownMenu ref={menuRef} onClick={() => logout()}>
+        <DropdownMenu
+          data-testId="dropdown-menu"
+          ref={menuRef}
+          onClick={() => logout()}
+        >
           <p>Sair</p>
         </DropdownMenu>
       )}
@@ -36,4 +40,4 @@ const Navbar: React.FC = () => {
   )
 }
 
-export default Navbar
+export default User
