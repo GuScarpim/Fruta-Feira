@@ -13,7 +13,7 @@ interface IValues {
 const fakeLogin = async (email: string, password: string) => {
   return new Promise<{ token: string; name: string }>((resolve, reject) => {
     setTimeout(() => {
-      if (email === 'gustavo@gmail.com' && password === '123') {
+      if (email.toLowerCase() === 'gustavo@gmail.com' && password === '123') {
         resolve({
           token: 'fakeToken123',
           name: 'Gustavo',

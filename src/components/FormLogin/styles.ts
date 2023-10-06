@@ -73,6 +73,7 @@ export const InputCustom = styled.input`
 
   @media screen and (max-width: 500px) {
     width: 100%;
+    padding: 0;
   }
 `
 
