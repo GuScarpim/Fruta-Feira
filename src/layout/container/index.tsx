@@ -10,7 +10,7 @@ const Container = ({ children }: IContainer) => {
   return (
     <>
       <Navbar />
-      <Section>{children}</Section>
+      <Section data-testId="layout-container-section">{children}</Section>
       <Footer />
     </>
   )

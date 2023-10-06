@@ -12,7 +12,7 @@ import Logo from '~/assets/logo/logo.png'
 
 const Footer = () => {
   return (
-    <Container>
+    <Container data-testId="footer">
       <Content>
         <ArticleLocalization>
           <h1>Localização</h1>
@@ -24,11 +24,11 @@ const Footer = () => {
 
         <SectionContact>
           <section>
-            <button type='button'>
+            <button type="button">
               <IoIosMail />
               Entre em contato
             </button>
-            <button type='button'>
+            <button type="button">
               <BsHeadset />
               Consultor online
             </button>
@@ -36,7 +36,7 @@ const Footer = () => {
         </SectionContact>
 
         <SectionSponsor>
-          <img alt='Logo' src={Logo} />
+          <img alt="Logo" src={Logo} />
         </SectionSponsor>
       </Content>
     </Container>
