@@ -32,6 +32,11 @@ Run dev server:
 yarn dev ou npm run dev
 ```
 
+Run test
+```sh
+yarn test ou npm run test
+```
+
 ```sh
 para acessar a plataforma entre com:
 { 
