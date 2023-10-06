@@ -10,11 +10,11 @@ const defaultStyle: React.CSSProperties = {
   zIndex: 9999,
 }
 
-const ToastContainer: React.FC<ToastContainerProps> = (props) => (
+const ToastContainer: React.FC<ToastContainerProps> = props => (
   <OriginalToastContainer
     autoClose={5000}
     hideProgressBar={false}
-    position='top-right'
+    position="top-right"
     style={defaultStyle}
     closeOnClick
     draggable
