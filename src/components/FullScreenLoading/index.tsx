@@ -2,8 +2,8 @@ import { LoadingContainer, Spinner } from './styles'
 
 const FullScreenLoading = () => {
   return (
-    <LoadingContainer>
-      <Spinner />
+    <LoadingContainer data-testId="loading-container">
+      <Spinner data-testId="spinner"/>
     </LoadingContainer>
   )
 }

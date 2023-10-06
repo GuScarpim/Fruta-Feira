@@ -3,11 +3,8 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import useFruitStore from '~/store/fruit'
 import pdfMake from 'pdfmake/build/pdfmake'
-import pdfFonts from 'pdfmake/build/vfs_fonts'
 import { numberFormat } from '~/utils/formatNumbers'
 import { fruits as mockFruits } from '~/utils/fruitsMock'
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export const useFruits = () => {
   const [isLoading, setIsLoading] = useState(false)

@@ -26,28 +26,29 @@ const Navbar = () => {
     <div>
       <Modal
         openModal={openModal}
-        title='Fazer checkout'
+        title="Fazer checkout"
         onClose={() => setOpenModal(false)}
       />
       <Nav>
         <div>
           <ContentNavbar>
-            <RightLogo alt='FrutaFeira' src={Logo} />
+            <RightLogo alt="FrutaFeira" src={Logo} />
 
             <ContentInput>
               <input
-                placeholder='O que está procurando?'
-                type='text'
+                placeholder="O que está procurando?"
+                type="text"
+                data-testId="search-icon"
                 onChange={handleChange}
               />
               <PiMagnifyingGlass />
             </ContentInput>
 
-            <User />
+            <User data-testId="user-component" />
 
             <Notification onClick={() => setOpenModal(true)}>
-              <FaShoppingCart />
-              <span>{totalQuantity}</span>
+              <FaShoppingCart data-testId="cart-icon" />
+              <span data-testId="cart-quantity">{totalQuantity}</span>
             </Notification>
           </ContentNavbar>
         </div>
