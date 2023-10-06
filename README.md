@@ -39,3 +39,13 @@ para acessar a plataforma entre com:
   "senha": 123 
 }
 ```
+
+# Figma
+
+UI do projeto no FIGMA: <a href="https://www.figma.com/file/CXneJFs5isZ2aUSQRiyeU2/FrutaFeira?type=design&node-id=0-1&mode=design" target="_blank">Clique aqui para acessar o FIGMA</a>
+
+# Deploy
+
+Clique e acesse: <a href="https://frutafeira.netlify.app/" target="_blank">Deploy FrutaFeira</a>
+
+
