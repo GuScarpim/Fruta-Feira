@@ -2,8 +2,8 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import useFruitStore from '~/store/fruit'
-import pdfMake from 'pdfmake/build/pdfmake'
-import pdfFonts from 'pdfmake/build/vfs_fonts'
+import * as pdfMake from 'pdfmake/build/pdfmake.js'
+import * as pdfFonts from 'pdfmake/build/vfs_fonts.js'
 import { numberFormat } from '~/utils/formatNumbers'
 import { fruits as mockFruits } from '~/utils/fruitsMock'
 
@@ -88,7 +88,8 @@ export const useFruits = () => {
         fruitDescription: { fontSize: 12, margin: [0, 0, 0, 10] },
       },
     }
-    pdfMake.vfs = pdfFonts?.pdfMake?.vfs
+    // pdfMake.vfs = pdfFonts
+    pdfMake.vfs = pdfFonts.pdfMake.vfs
     pdfMake.createPdf(documentDefinition).download('comprovante_frutaFeira.pdf')
   }
 
