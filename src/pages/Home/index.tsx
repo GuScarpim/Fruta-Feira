@@ -17,18 +17,24 @@ const Home = (): JSX.Element => {
         <Title>Frutas</Title>
       </ContentTitle>
       <Section>
-        {filteredFruits.map((fruit) => (
-          <Content key={fruit.id}>
-            <Cards
-              description={fruit.description}
-              fruitId={fruit.id}
-              quantity={fruit.quantity}
-              src={fruit.src}
-              title={fruit.title}
-              value={fruit.value}
-            />
-          </Content>
-        ))}
+        {filteredFruits.length > 0 ? (
+          <>
+            {filteredFruits.map(fruit => (
+              <Content key={fruit.id}>
+                <Cards
+                  description={fruit.description}
+                  fruitId={fruit.id}
+                  quantity={fruit.quantity}
+                  src={fruit.src}
+                  title={fruit.title}
+                  value={fruit.value}
+                />
+              </Content>
+            ))}{' '}
+          </>
+        ) : (
+          <Title>Nenhuma fruta foi encontrado!</Title>
+        )}
       </Section>
     </Container>
   )
