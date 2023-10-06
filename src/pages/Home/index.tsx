@@ -6,7 +6,7 @@ import ToastContainer from '~/components/ToastContainer'
 import { useFruits } from '~/hooks/useFruits'
 import Container from '~/layout/container'
 
-const Login = (): JSX.Element => {
+const Home = (): JSX.Element => {
   const { isLoading, filteredFruits } = useFruits()
 
   return (
@@ -34,4 +34,4 @@ const Login = (): JSX.Element => {
   )
 }
 
-export default Login
+export default Home

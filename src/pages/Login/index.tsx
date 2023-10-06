@@ -11,14 +11,16 @@ const Login = (): JSX.Element => {
   const { isLoading, onSubmit } = useLogin()
 
   return (
-    <LayoutLogin>
-      {isLoading && <FullScreenLoading />}
-      <ToastContainer />
-      <FormLogin
-        validationSchema={validationSchemaLogin}
-        onSubmit={onSubmit as (values?: object | undefined) => void}
-      />
-    </LayoutLogin>
+    <div data-testId="login">
+      <LayoutLogin>
+        {isLoading && <FullScreenLoading />}
+        <ToastContainer />
+        <FormLogin
+          validationSchema={validationSchemaLogin}
+          onSubmit={onSubmit as (values?: object | undefined) => void}
+        />
+      </LayoutLogin>
+    </div>
   )
 }
 
