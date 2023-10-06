@@ -11,10 +11,12 @@ interface IFruitsItems {
 const FruitsItems = ({ src, title, value }: IFruitsItems) => {
   return (
     <Container>
-      <img alt={title} src={src} />
+      <img data-testId="fruits-items-image" alt={title} src={src} />
       <Box>
-        <Title>{title}</Title>
-        <Price>Preço: R$ {numberFormat(String(value))}</Price>
+        <Title data-testId="fruits-items-title">{title}</Title>
+        <Price data-testId="fruits-items-price">
+          Preço: R$ {numberFormat(String(value))}
+        </Price>
       </Box>
     </Container>
   )

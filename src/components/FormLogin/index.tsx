@@ -28,34 +28,42 @@ const FormLogin = ({ onSubmit, validationSchema }: IFormLogin): JSX.Element => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => onSubmit(values)}
+        onSubmit={values => onSubmit(values)}
       >
         <Form>
           <Content>
             <ContentImg>
-              <ImageLogo alt='FrutaFeira' src={Logo} />
+              <ImageLogo alt="FrutaFeira" src={Logo} />
             </ContentImg>
             <Collumn>
-              <Label>Email</Label>
+              <Label data-testid="email-label">Email</Label>
               <Field
+                data-testId="email-input"
                 as={InputCustom}
-                name='email'
-                placeholder='Insira o seu email'
-                type='text'
+                name="email"
+                placeholder="Insira o seu email"
+                type="text"
               />
-              <ErrorMessageCustom component='div' name='email' />
+              <ErrorMessageCustom component="div" name="email" />
             </Collumn>
             <Collumn>
-              <Label>Senha</Label>
+              <Label data-testid="senha-label">Senha</Label>
               <Field
+                data-testId="senha-input"
                 as={InputCustom}
-                name='password'
-                placeholder='******'
-                type='password'
+                name="password"
+                placeholder="******"
+                type="password"
               />
-              <ErrorMessageCustom component='div' name='password' />
+              <ErrorMessageCustom component="div" name="password" />
             </Collumn>
-            <ButtonCustom type='submit'>Entrar</ButtonCustom>
+            <ButtonCustom
+              data-testid="submit-button"
+              aria-label="submit-button"
+              type="submit"
+            >
+              Entrar
+            </ButtonCustom>
           </Content>
         </Form>
       </Formik>
