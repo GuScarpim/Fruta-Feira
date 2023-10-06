@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import useFruitStore from '~/store/fruit'
 import pdfMake from 'pdfmake/build/pdfmake'
+import pdfFonts from 'pdfmake/build/vfs_fonts'
 import { numberFormat } from '~/utils/formatNumbers'
 import { fruits as mockFruits } from '~/utils/fruitsMock'
 
@@ -21,9 +22,9 @@ export const useFruits = () => {
   const loadFruits = async () => {
     try {
       setIsLoading(true)
-      await new Promise((resolve) => {
+      await new Promise(resolve => {
         if (fruits.length === 0) {
-          setFruits(mockFruits);
+          setFruits(mockFruits)
         }
         setTimeout(resolve, 1000)
       })
@@ -42,7 +43,7 @@ export const useFruits = () => {
   const getImageAsDataUrl = async (src: string) => {
     const response = await fetch(src)
     const blob = await response.blob()
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       const reader = new FileReader()
       reader.onloadend = () => resolve(reader.result)
       reader.readAsDataURL(blob)
@@ -52,8 +53,8 @@ export const useFruits = () => {
   const generatePDF = async () => {
     const content = await Promise.all(
       fruits
-        .filter((fruit) => fruit.quantity > 0)
-        .map(async (fruit) => {
+        .filter(fruit => fruit.quantity > 0)
+        .map(async fruit => {
           const imageDataUrl = await getImageAsDataUrl(fruit.src)
           return [
             { image: imageDataUrl, width: 50, height: 50 },
@@ -87,7 +88,7 @@ export const useFruits = () => {
         fruitDescription: { fontSize: 12, margin: [0, 0, 0, 10] },
       },
     }
-
+    pdfMake.vfs = pdfFonts?.pdfMake?.vfs
     pdfMake.createPdf(documentDefinition).download('comprovante_frutaFeira.pdf')
   }
 
