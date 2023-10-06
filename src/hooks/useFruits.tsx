@@ -7,7 +7,7 @@ import { numberFormat } from '~/utils/formatNumbers'
 import { fruits as mockFruits } from '~/utils/fruitsMock'
 
 export const useFruits = () => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const {
     fruits,
     totalValue,
