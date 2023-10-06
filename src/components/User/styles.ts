@@ -62,4 +62,9 @@ export const DropdownMenu = styled.div`
     padding: 8px;
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    left: 30%;
+    max-width: 100px;
+  }
 `
