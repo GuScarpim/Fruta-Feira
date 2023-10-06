@@ -10,6 +10,6 @@ export const publicRoutes = [
   },
   {
     path: '*',
-    element: <Navigate to={enumRoutes.home} replace />,
+    element: <Navigate to={enumRoutes.login} replace />,
   },
 ]

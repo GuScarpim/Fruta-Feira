@@ -22,6 +22,7 @@ interface FruitStoreActions {
   removeOneFruit: (fruitId: number) => void
   addOneFruit: (fruitId: number) => void
   setSearchTerm: (term: string) => void
+  clearFruitsData: () => void
 }
 
 const initialState: FruitStore = {
@@ -30,6 +31,8 @@ const initialState: FruitStore = {
   totalQuantity: 0,
   totalValue: 0,
 }
+
+const storageName = 'storage-frutas'
 
 const useFruitStore = create(
   persist<FruitStore & FruitStoreActions>(
@@ -113,9 +116,13 @@ const useFruitStore = create(
 
           return { filteredFruits: newFilteredFruits }
         }),
+      clearFruitsData: () => {
+        set({ fruits: [] })
+        localStorage.removeItem(storageName)
+      },
     }),
     {
-      name: 'storage-frutas',
+      name: storageName,
       getStorage: () => localStorage,
     },
   ),

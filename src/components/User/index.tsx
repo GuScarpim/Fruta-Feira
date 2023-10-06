@@ -6,9 +6,11 @@ import user from '~/store/user'
 import { PiUserBold } from 'react-icons/pi'
 
 import { ContentUser, DropdownMenu } from './styles'
+import useFruitStore from '~/store/fruit'
 
 const User: React.FC = () => {
   const navigate = useNavigate()
+  const { clearFruitsData } = useFruitStore()
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const data = user((state) => state.user)
@@ -16,6 +18,7 @@ const User: React.FC = () => {
 
   const logout = () => {
     user.getState().clearUserData()
+    clearFruitsData()
     navigate(enumRoutes.login)
   }
 
