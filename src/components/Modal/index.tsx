@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable new-cap */
 import 'react-responsive-modal/styles.css'
 import { Modal } from 'react-responsive-modal'
 
