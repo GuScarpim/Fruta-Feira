@@ -1,5 +1,3 @@
-// user.ts (ou onde você está definindo seu store user)
-/* eslint-disable @typescript-eslint/no-shadow */
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 

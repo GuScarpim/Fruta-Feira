@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 interface IFruit {
@@ -13,22 +13,29 @@ interface IFruit {
 interface FruitStore {
   fruits: IFruit[]
   filteredFruits: IFruit[]
-  setFruits: (fruits: IFruit[]) => void
   totalQuantity: number
   totalValue: number
+}
+
+interface FruitStoreActions {
+  setFruits: (fruits: IFruit[]) => void
   removeOneFruit: (fruitId: number) => void
   addOneFruit: (fruitId: number) => void
   setSearchTerm: (term: string) => void
 }
 
+const initialState: FruitStore = {
+  fruits: [],
+  filteredFruits: [],
+  totalQuantity: 0,
+  totalValue: 0,
+}
+
 const useFruitStore = create(
-  persist<FruitStore>(
-    (set) => ({
-      fruits: [],
-      filteredFruits: [],
-      totalQuantity: 0,
-      totalValue: 0,
-      setFruits: (fruits) => {
+  persist<FruitStore & FruitStoreActions>(
+    set => ({
+      ...initialState,
+      setFruits: fruits => {
         const newTotalQuantity = fruits.reduce(
           (acc, fruit) => acc + fruit.quantity,
           0,
@@ -39,16 +46,14 @@ const useFruitStore = create(
         )
         set({
           fruits,
-          filteredFruits: fruits, // Atualiza também a lista filtrada
+          filteredFruits: fruits,
           totalQuantity: newTotalQuantity,
           totalValue: newTotalValue,
         })
       },
-      removeOneFruit: (fruitId) =>
-        set((state) => {
-          const removedFruit = state.fruits.find(
-            (fruit) => fruit.id === fruitId,
-          )
+      removeOneFruit: fruitId =>
+        set(state => {
+          const removedFruit = state.fruits.find(fruit => fruit.id === fruitId)
           if (!removedFruit || removedFruit.quantity <= 0) {
             return state
           }
@@ -62,12 +67,12 @@ const useFruitStore = create(
           )
 
           return {
-            fruits: state.fruits.map((fruit) =>
+            fruits: state.fruits.map(fruit =>
               fruit.id === fruitId
                 ? { ...fruit, quantity: Math.max(0, fruit.quantity - 1) }
                 : fruit,
             ),
-            filteredFruits: state.filteredFruits.map((fruit) =>
+            filteredFruits: state.filteredFruits.map(fruit =>
               fruit.id === fruitId
                 ? { ...fruit, quantity: Math.max(0, fruit.quantity - 1) }
                 : fruit,
@@ -76,21 +81,21 @@ const useFruitStore = create(
             totalValue: newTotalValue,
           }
         }),
-      addOneFruit: (fruitId) =>
-        set((state) => {
-          const addedFruit = state.fruits.find((fruit) => fruit.id === fruitId)
+      addOneFruit: fruitId =>
+        set(state => {
+          const addedFruit = state.fruits.find(fruit => fruit.id === fruitId)
           const addedFruitValue = addedFruit?.value ?? 0
 
           const newTotalQuantity = state.totalQuantity + 1
           const newTotalValue = state.totalValue + addedFruitValue
 
           return {
-            fruits: state.fruits.map((fruit) =>
+            fruits: state.fruits.map(fruit =>
               fruit.id === fruitId
                 ? { ...fruit, quantity: fruit.quantity + 1 }
                 : fruit,
             ),
-            filteredFruits: state.filteredFruits.map((fruit) =>
+            filteredFruits: state.filteredFruits.map(fruit =>
               fruit.id === fruitId
                 ? { ...fruit, quantity: fruit.quantity + 1 }
                 : fruit,
@@ -99,10 +104,10 @@ const useFruitStore = create(
             totalValue: newTotalValue,
           }
         }),
-      setSearchTerm: (term) =>
-        set((state) => {
+      setSearchTerm: term =>
+        set(state => {
           const lowerCaseSearchTerm = term.toLowerCase()
-          const newFilteredFruits = state.fruits.filter((fruit) =>
+          const newFilteredFruits = state.fruits.filter(fruit =>
             fruit.title.toLowerCase().includes(lowerCaseSearchTerm),
           )
 
