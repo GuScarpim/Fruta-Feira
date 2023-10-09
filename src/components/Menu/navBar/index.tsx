@@ -7,7 +7,7 @@ import Logo from '~/assets/logo/logo.png'
 
 import Burger from '../burger'
 import Modal from '~/components/Modal'
-import User from '~/components/User'
+import User from '~/components/Dropdown'
 
 import {
   ContentNavbar,

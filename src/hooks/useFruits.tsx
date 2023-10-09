@@ -14,8 +14,8 @@ export const useFruits = () => {
     totalQuantity,
     filteredFruits,
     setFruits,
-    removeOneFruit,
-    addOneFruit,
+    removeFruitById,
+    addFruitById,
     setSearchTerm,
   } = useFruitStore()
   const loadFruits = async () => {
@@ -103,8 +103,8 @@ export const useFruits = () => {
     totalQuantity,
     filteredFruits,
     generatePDF,
-    removeOneFruit,
-    addOneFruit,
+    removeFruitById,
+    addFruitById,
     handleChange,
   }
 }

@@ -9,19 +9,19 @@ interface IButtonGroup {
 }
 
 const ButtonGroup = ({ fruitId, quantity }: IButtonGroup) => {
-  const { removeOneFruit, addOneFruit } = useFruitStore()
+  const { removeFruitById, addFruitById } = useFruitStore()
 
   return (
     <Container>
       <CircleButton
-        onClick={() => removeOneFruit(fruitId)}
+        onClick={() => removeFruitById(fruitId)}
         data-testId="buttonGroup-minus-button"
       >
         <AiOutlineMinus />
       </CircleButton>
       <Values data-testId="buttonGroup-values">{quantity || 0}</Values>
       <CircleButton
-        onClick={() => addOneFruit(fruitId)}
+        onClick={() => addFruitById(fruitId)}
         data-testId="buttonGroup-plus-button"
       >
         <AiOutlinePlus />

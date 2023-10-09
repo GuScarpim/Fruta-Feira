@@ -1,8 +1,8 @@
 import { render, fireEvent } from '@testing-library/react'
 import useFruitStore from '~/store/fruit'
 
-const addOneFruitSpy = jest.spyOn(useFruitStore.getState(), 'addOneFruit')
-const removeOneFruitSpy = jest.spyOn(useFruitStore.getState(), 'removeOneFruit')
+const addFruitByIdSpy = jest.spyOn(useFruitStore.getState(), 'addFruitById')
+const removeFruitByIdSpy = jest.spyOn(useFruitStore.getState(), 'removeFruitById')
 
 import Container from '~/__mocks__/container'
 import ButtonGroup from './index'
@@ -28,19 +28,19 @@ describe('ButtonGroup', () => {
     expect(getByTestId('buttonGroup-values')).toHaveTextContent('3')
   })
 
-  test('calls addOneFruit when plus button is clicked', () => {
+  test('calls addFruitById when plus button is clicked', () => {
     const { getByTestId } = render(<TestComponent />)
 
     fireEvent.click(getByTestId('buttonGroup-plus-button'))
 
-    expect(addOneFruitSpy).toHaveBeenCalledWith(1)
+    expect(addFruitByIdSpy).toHaveBeenCalledWith(1)
   })
 
-  test('calls removeOneFruit when minus button is clicked', () => {
+  test('calls removeFruitById when minus button is clicked', () => {
     const { getByTestId } = render(<TestComponent />)
 
     fireEvent.click(getByTestId('buttonGroup-minus-button'))
 
-    expect(removeOneFruitSpy).toHaveBeenCalledWith(1)
+    expect(removeFruitByIdSpy).toHaveBeenCalledWith(1)
   })
 })

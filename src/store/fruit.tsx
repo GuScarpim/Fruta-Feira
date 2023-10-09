@@ -19,8 +19,8 @@ interface FruitStore {
 
 interface FruitStoreActions {
   setFruits: (fruits: IFruit[]) => void
-  removeOneFruit: (fruitId: number) => void
-  addOneFruit: (fruitId: number) => void
+  removeFruitById: (fruitId: number) => void
+  addFruitById: (fruitId: number) => void
   setSearchTerm: (term: string) => void
   clearFruitsData: () => void
 }
@@ -54,7 +54,7 @@ const useFruitStore = create(
           totalValue: newTotalValue,
         })
       },
-      removeOneFruit: fruitId =>
+      removeFruitById: fruitId =>
         set(state => {
           const removedFruit = state.fruits.find(fruit => fruit.id === fruitId)
           if (!removedFruit || removedFruit.quantity <= 0) {
@@ -84,7 +84,7 @@ const useFruitStore = create(
             totalValue: newTotalValue,
           }
         }),
-      addOneFruit: fruitId =>
+      addFruitById: fruitId =>
         set(state => {
           const addedFruit = state.fruits.find(fruit => fruit.id === fruitId)
           const addedFruitValue = addedFruit?.value ?? 0
