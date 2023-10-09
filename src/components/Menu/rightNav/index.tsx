@@ -1,6 +1,6 @@
 import { Ul, RightLogo } from './styles'
 
-import User from '~/components/User'
+import User from '~/components/Dropdown'
 import Logo from '~/assets/logo/logo.png'
 
 interface IRightNav {

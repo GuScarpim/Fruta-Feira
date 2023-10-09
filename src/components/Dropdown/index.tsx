@@ -8,7 +8,7 @@ import { PiUserBold } from 'react-icons/pi'
 import { ContentUser, DropdownMenu } from './styles'
 import useFruitStore from '~/store/fruit'
 
-const User: React.FC = () => {
+const Dropdown: React.FC = () => {
   const navigate = useNavigate()
   const { clearFruitsData } = useFruitStore()
 
@@ -43,4 +43,4 @@ const User: React.FC = () => {
   )
 }
 
-export default User
+export default Dropdown

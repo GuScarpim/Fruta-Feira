@@ -3,26 +3,12 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { enumRoutes } from '~/utils/routesEnum'
+import { fakeLogin } from '~/utils/fakeLogin'
 import user, { UserState, UserActions } from '~/store/user'
 
 interface IValues {
   email: string
   password: string
-}
-
-const fakeLogin = async (email: string, password: string) => {
-  return new Promise<{ token: string; name: string }>((resolve, reject) => {
-    setTimeout(() => {
-      if (email.toLowerCase() === 'gustavo@gmail.com' && password === '123') {
-        resolve({
-          token: 'fakeToken123',
-          name: 'Gustavo',
-        })
-      } else {
-        reject(new Error('Credenciais inválidas'))
-      }
-    }, 1000)
-  })
 }
 
 export const useLogin = () => {
