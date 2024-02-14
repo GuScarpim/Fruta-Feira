@@ -13,6 +13,7 @@ Desenvolver um app, tipo e-commerce, utilizando React.JS para vender maçã, pê
 - react + vite + typescript
 - formik
 - jest
+- cypress
 - pdfmake
 - react-responsive-modal
 - react-toastify
